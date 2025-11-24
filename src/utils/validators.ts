@@ -36,17 +36,17 @@ export const mercatoLiberoSchema = z
     strategy: z.enum(['resale', 'rental'], {
       required_error: 'Seleziona una strategia',
     }),
-    resalePrice: z.number().positive().optional(),
-    resaleMonths: z.number().positive().optional(),
-    monthlyRent: z.number().positive().optional(),
-    rentalYears: z.number().positive().optional(),
+    resalePrice: z.number().positive().optional().or(z.literal(0)).optional(),
+    resaleMonths: z.number().positive().optional().or(z.literal(0)).optional(),
+    monthlyRent: z.number().positive().optional().or(z.literal(0)).optional(),
+    rentalYears: z.number().positive().optional().or(z.literal(0)).optional(),
   })
   .refine(
     (data) => {
       if (data.strategy === 'resale') {
-        return data.resalePrice && data.resaleMonths;
+        return data.resalePrice && data.resalePrice > 0 && data.resaleMonths && data.resaleMonths > 0;
       }
-      return data.monthlyRent && data.rentalYears;
+      return data.monthlyRent && data.monthlyRent > 0 && data.rentalYears && data.rentalYears > 0;
     },
     {
       message: 'Completa tutti i campi per la strategia selezionata',
@@ -97,17 +97,17 @@ export const astaSchema = z
     strategy: z.enum(['immediate-resale', 'renovation-resale', 'rental'], {
       required_error: 'Seleziona una strategia',
     }),
-    renovatedValue: z.number().positive().optional(),
-    monthlyRent: z.number().positive().optional(),
-    rentalYears: z.number().positive().optional(),
+    renovatedValue: z.number().positive().optional().or(z.literal(0)).optional(),
+    monthlyRent: z.number().positive().optional().or(z.literal(0)).optional(),
+    rentalYears: z.number().positive().optional().or(z.literal(0)).optional(),
   })
   .refine(
     (data) => {
       if (data.strategy === 'renovation-resale') {
-        return data.renovatedValue;
+        return data.renovatedValue && data.renovatedValue > 0;
       }
       if (data.strategy === 'rental') {
-        return data.monthlyRent && data.rentalYears;
+        return data.monthlyRent && data.monthlyRent > 0 && data.rentalYears && data.rentalYears > 0;
       }
       return true;
     },
