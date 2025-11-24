@@ -7,8 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#22c55e",  // verde
-        accent: "#f97316",   // arancione
+        primary: "#21422F",  // verde scuro
+        accent: "#FFFFFF",   // bianco
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
     },
   },
