@@ -103,6 +103,9 @@ export const astaSchema = z
   })
   .refine(
     (data) => {
+      if (data.strategy === 'immediate-resale') {
+        return data.renovatedValue && data.renovatedValue > 0;
+      }
       if (data.strategy === 'renovation-resale') {
         return data.renovatedValue && data.renovatedValue > 0;
       }
@@ -113,7 +116,7 @@ export const astaSchema = z
     },
     {
       message: 'Completa tutti i campi per la strategia selezionata',
-      path: ['strategy'],
+      path: ['renovatedValue'],
     }
   );
 

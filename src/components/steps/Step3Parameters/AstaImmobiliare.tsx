@@ -296,6 +296,17 @@ export const AstaImmobiliare = ({
               </button>
             </div>
 
+            {strategy === 'immediate-resale' && (
+              <Input
+                label="Prezzo di Rivendita Previsto"
+                type="number"
+                prefix="€"
+                helperText="A quanto prevedi di rivendere l'immobile"
+                error={errors.renovatedValue?.message}
+                {...register('renovatedValue', { valueAsNumber: true })}
+              />
+            )}
+
             {strategy === 'renovation-resale' && (
               <Input
                 label="Valore Post-Ristrutturazione"

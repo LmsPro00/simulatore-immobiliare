@@ -222,7 +222,8 @@ export const calculateAstaImmobiliare = (
   
   switch (params.strategy) {
     case 'immediate-resale':
-      finalValue = params.appraisalValue;
+      // Usa renovatedValue come prezzo di rivendita previsto
+      finalValue = params.renovatedValue || params.appraisalValue;
       timeframe = 6; // mesi stimati
       break;
     case 'renovation-resale':
