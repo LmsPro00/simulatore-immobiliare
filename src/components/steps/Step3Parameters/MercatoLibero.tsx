@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ChevronRight, ChevronLeft, Home, TrendingUp } from 'lucide-react';
-import { Card, CardBody, Button, Input, Toggle, Select } from '../../ui';
+import { Card, CardBody, Button, Input, Toggle } from '../../ui';
 import { mercatoLiberoSchema, type MercatoLiberoFormData } from '../../../utils/validators';
-import { formatCurrency, formatInputNumber, cleanNumericInput } from '../../../utils/formatters';
+import { formatCurrency } from '../../../utils/formatters';
 import { calculateNotaryCosts } from '../../../utils/calculations';
 import { getTooltip } from '../../../data/tooltips';
 import type { MercatoLiberoParams } from '../../../types/simulator.types';
@@ -25,8 +25,8 @@ export const MercatoLibero = ({
   const [strategy, setStrategy] = useState<'resale' | 'rental'>(
     initialData?.strategy || 'resale'
   );
-  const [hasAgency, setHasAgency] = useState(initialData?.hasAgency || false);
-  const [isFirstHome, setIsFirstHome] = useState(initialData?.isFirstHome || true);
+  const [hasAgency, setHasAgency] = useState<boolean>(initialData?.hasAgency || false);
+  const [isFirstHome, setIsFirstHome] = useState<boolean>(initialData?.isFirstHome ?? true);
 
   const {
     register,

@@ -25,8 +25,8 @@ export const AstaImmobiliare = ({
   const [strategy, setStrategy] = useState<'immediate-resale' | 'renovation-resale' | 'rental'>(
     initialData?.strategy || 'immediate-resale'
   );
-  const [isOccupied, setIsOccupied] = useState(initialData?.isOccupied || false);
-  const [isFirstHome, setIsFirstHome] = useState(initialData?.isFirstHome || true);
+  const [isOccupied, setIsOccupied] = useState<boolean>(initialData?.isOccupied || false);
+  const [isFirstHome, setIsFirstHome] = useState<boolean>(initialData?.isFirstHome ?? true);
 
   const {
     register,
@@ -161,7 +161,6 @@ export const AstaImmobiliare = ({
             <Toggle
               label="Immobile occupato?"
               description="Presenza di occupanti da sgomberare"
-              tooltip={getTooltip('immobileOccupato')}
               checked={isOccupied}
               onChange={(e) => setIsOccupied(e.target.checked)}
             />
