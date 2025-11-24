@@ -44,10 +44,10 @@ export const MercatoLibero = ({
       hasAgency: initialData?.hasAgency || false,
       isFirstHome: initialData?.isFirstHome || true,
       strategy: initialData?.strategy || 'resale',
-      resalePrice: initialData?.resalePrice,
-      resaleMonths: initialData?.resaleMonths,
-      monthlyRent: initialData?.monthlyRent,
-      rentalYears: initialData?.rentalYears,
+      resalePrice: initialData?.resalePrice || 0,
+      resaleMonths: initialData?.resaleMonths || 0,
+      monthlyRent: initialData?.monthlyRent || 0,
+      rentalYears: initialData?.rentalYears || 0,
     },
   });
 

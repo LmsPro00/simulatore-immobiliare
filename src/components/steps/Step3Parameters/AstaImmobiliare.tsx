@@ -45,9 +45,9 @@ export const AstaImmobiliare = ({
       legalCosts: initialData?.legalCosts || 7500,
       isFirstHome: initialData?.isFirstHome || true,
       strategy: initialData?.strategy || 'immediate-resale',
-      renovatedValue: initialData?.renovatedValue,
-      monthlyRent: initialData?.monthlyRent,
-      rentalYears: initialData?.rentalYears,
+      renovatedValue: initialData?.renovatedValue || 0,
+      monthlyRent: initialData?.monthlyRent || 0,
+      rentalYears: initialData?.rentalYears || 0,
     },
   });
 
