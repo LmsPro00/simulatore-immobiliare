@@ -314,11 +314,17 @@ export const Step4Results = ({
             Richiedi una consulenza gratuita personalizzata con i nostri esperti di
             investimenti immobiliari
           </p>
-          <Button variant="primary" size="lg" className="mx-auto">
-            Richiedi Consulenza Gratuita
-          </Button>
+          <a
+            href="https://meetings-eu1.hubspot.com/cristian-testa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="primary" size="lg" className="mx-auto">
+              Richiedi Consulenza Gratuita
+            </Button>
+          </a>
           <p className="text-sm text-slate-500 mt-4">
-            Ti contatteremo entro 24 ore per discutere la tua strategia
+            Prenota subito un appuntamento con il nostro team
           </p>
         </CardBody>
       </Card>
