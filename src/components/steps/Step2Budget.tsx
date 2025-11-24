@@ -32,7 +32,6 @@ export const Step2Budget = ({
   const [hasFinancing, setHasFinancing] = useState(initialHasFinancing);
 
   const {
-    register,
     handleSubmit,
     setValue,
     watch,
