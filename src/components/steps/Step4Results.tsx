@@ -1,4 +1,4 @@
-import { TrendingUp, AlertTriangle, CheckCircle, RotateCcw } from 'lucide-react';
+import { TrendingUp, AlertTriangle, CheckCircle, RotateCcw, ChevronLeft } from 'lucide-react';
 import { Card, CardBody, Button } from '../ui';
 import { formatCurrency, formatPercentage, formatMonths } from '../../utils/formatters';
 import type { SimulationResults, OperationType } from '../../types/simulator.types';
@@ -8,6 +8,7 @@ interface Step4ResultsProps {
   operationType: OperationType;
   budget: number;
   onReset: () => void;
+  onBack: () => void;
 }
 
 export const Step4Results = ({
@@ -15,6 +16,7 @@ export const Step4Results = ({
   operationType,
   budget,
   onReset,
+  onBack,
 }: Step4ResultsProps) => {
   const getOperationLabel = (type: OperationType) => {
     switch (type) {
@@ -331,6 +333,15 @@ export const Step4Results = ({
 
       {/* Actions */}
       <div className="flex justify-center gap-4">
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={onBack}
+          icon={<ChevronLeft className="w-5 h-5" />}
+          iconPosition="left"
+        >
+          Modifica Parametri
+        </Button>
         <Button
           variant="outline"
           size="lg"

@@ -45,7 +45,7 @@ export const MercatoLibero = ({
       isFirstHome: initialData?.isFirstHome || true,
       strategy: initialData?.strategy || 'resale',
       resalePrice: initialData?.resalePrice || 0,
-      resaleMonths: initialData?.resaleMonths || 0,
+      resaleMonths: initialData?.resaleMonths || 12,
       monthlyRent: initialData?.monthlyRent || 0,
       rentalYears: initialData?.rentalYears || 0,
     },
@@ -98,20 +98,34 @@ export const MercatoLibero = ({
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               <Input
-                label="Prezzo Richiesto dal Venditore"
+                label="Prezzo di Vendita del Venditore/Proprietario"
                 type="number"
                 prefix="€"
                 tooltip={getTooltip('margineTrattativa')}
                 error={errors.askingPrice?.message}
                 {...register('askingPrice', { valueAsNumber: true })}
               />
-              <Input
-                label="Valore di Mercato Stimato"
-                type="number"
-                prefix="€"
-                error={errors.marketValue?.message}
-                {...register('marketValue', { valueAsNumber: true })}
-              />
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Tipologia dell'Immobile
+                </label>
+                <select
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  {...register('marketValue', { valueAsNumber: true })}
+                >
+                  <option value="">Seleziona tipologia</option>
+                  <option value="80000">Monolocale</option>
+                  <option value="120000">Bilocale</option>
+                  <option value="180000">Trilocale</option>
+                  <option value="250000">Quadrilocale</option>
+                  <option value="300000">Cielo-terra</option>
+                  <option value="150000">Sottotetto</option>
+                  <option value="200000">Da Ufficio ad Abitazione</option>
+                </select>
+                {errors.marketValue && (
+                  <p className="mt-1 text-sm text-red-600">{errors.marketValue.message}</p>
+                )}
+              </div>
               <Input
                 label="Margine Trattativa Previsto"
                 type="number"

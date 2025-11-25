@@ -128,6 +128,7 @@ function App() {
             operationType={state.operationType}
             budget={totalBudget}
             onReset={reset}
+            onBack={prevStep}
           />
         )}
       </main>
